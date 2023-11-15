@@ -10,4 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+char *rcom(void);
+int _putchar(char c);
+char **incoommand(char *l);
 #endif

@@ -1,5 +1,5 @@
 #include "shell.h"
-/*
+/**
  * main - main function
  * @argc: num of argument
  * @argv: list of argument
@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 		l = rcom();/*for read the command line*/
 	}
 }
-/*
+/**
  * rcom - function to read the command line
  * Return: line
  */

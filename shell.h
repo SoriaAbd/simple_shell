@@ -10,7 +10,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+extern char **env;
+
 char *rcom(void);
 int _putchar(char c);
 char **incoommand(char *l);
+void f_array(char **a);
+
 #endif

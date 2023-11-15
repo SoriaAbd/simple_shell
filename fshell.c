@@ -39,3 +39,58 @@ char **incoommand(char *l)
 	a[i] = NULL;
 	return (a);
 }
+/**
+ * print_environment - print a stander shell
+ * Return: void
+*/
+
+void print_environment(void)
+{
+	int x;
+
+	for (x = 0; env[x]; x++)
+	{
+		_putchar(env[x]);
+		_putchar("\n");
+	}
+}
+
+/**
+ * exit_com - exit from command system
+ * @com: command line
+ * @argv: command char
+ * @i: index
+ * Return: int
+*/
+
+int exit_com(char **com, char **argv, int i)
+{
+	int s;/*ststus*/
+	pid_t child;
+	char *comand;
+
+	comand = _getpath(com[0]);
+	if (!comand)
+	{
+		printerror(argv[0], com[0], i);
+		f_array(com);
+		return (127);
+	}
+
+	child = fork();
+	if (child == 0)
+	{
+		if (execve(comand, com, env) == -1)
+		{
+			free(comand);
+			freearray(com);
+		}
+	}
+	else
+	{
+		waitpid(child, &s, 0);
+		freearray(com);
+		free(comand);
+	}
+	return (WEXITSTATUS(s));
+}

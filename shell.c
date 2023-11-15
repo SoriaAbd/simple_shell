@@ -70,3 +70,23 @@ int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
+
+/**
+ * f_array - free an array
+ * @a: array
+ * Retuen: void
+ */
+
+void f_array(char **a)
+{
+	int x;
+
+if (!a)
+	return;
+for (x = 0; a[x]; x++)
+	{
+	free(a[x]);
+	a[x] = NULL;
+	}
+free(a);
+}

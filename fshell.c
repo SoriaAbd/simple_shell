@@ -69,7 +69,7 @@ int exit_com(char **com, char **argv, int i)
 	pid_t child;
 	char *comand;
 
-	comand = getpath(com[0]);
+	comand = get_path(com[0]);
 	if (!comand)
 	{
 		p_error(argv[0], com[0], i);

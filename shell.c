@@ -90,3 +90,48 @@ for (x = 0; a[x]; x++)
 	}
 free(a);
 }
+/**
+ * get_path - give us the path
+ * @com:command line 
+ * Return: the path
+ */
+
+char *get_path(char *com)
+{
+	struct stat s;
+	char *p_env, *c, *r;
+	int x;
+
+	for (x = 0; com[x] ; x++)
+	{
+		if (com[x] == '/')
+		{
+			if (stat(com, &s) == 0)
+				return (strdup(com));
+		return (NULL);
+		}
+	}
+	p_env = getenv("PATH");
+	if (!p_env)
+		return (NULL);
+	r = strtok(p_env, ":");
+	while (r)
+	{
+		com = malloc(strlen(r) + strlen(com) + 2);
+		if (c)
+		{
+			strcpy(c, r);
+			strcat(c, "/");
+			strcat(c, com);
+			if (stat(c, &s) == 0)
+			{
+				free(path_env);
+				return (c);
+			}
+			free(c);
+			r = strtok(NULL, ":");
+		}
+	}
+	free(path_env);
+	return (NULL);
+}

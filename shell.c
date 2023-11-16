@@ -111,7 +111,7 @@ char *get_path(char *com)
 		return (NULL);
 		}
 	}
-	p_env = getenv("PATH");
+	p_env = get_env("PATH");
 	if (!p_env)
 		return (NULL);
 	r = strtok(p_env, ":");

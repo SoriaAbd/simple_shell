@@ -21,4 +21,5 @@ int exit_com(char **com, char **argv, int i);
 void p_error(char *n, char *com, int i);
 char *_it(int in);
 char *get_path(char *com);
+char *get_env(char *p);
 #endif

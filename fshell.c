@@ -115,3 +115,28 @@ void p_error(char *n, char *com, int i)
         write(STDERR_FILENO, msg, strlen(massage));
         free(x);
 }
+/**
+ * _it - change int to string
+ * @in:int
+ * Return:a string
+*/
+
+char *_it(int in)
+{
+	char buffer[20];
+	int index = 0;
+
+	if (in == 0)
+		buffer[index++] = '0';
+	else
+	{
+		while (in > 0)
+		{
+			buffer[index++] = (in % 10) + '0';
+			in /= 10;
+		}
+	}
+	buffer[index] = '\0';
+	strrev(buffer, index);
+	return (strcpy(buffer));
+}

@@ -92,7 +92,7 @@ free(a);
 }
 /**
  * get_path - give us the path
- * @com:command line 
+ * @com:command line
  * Return: the path
  */
 

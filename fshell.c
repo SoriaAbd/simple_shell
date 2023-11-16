@@ -1,39 +1,39 @@
 #include "shell.h"
 /**
- * incommand - input commands function
+ * incoommand - input commands function
  * @l:line char
  * Return:char
  */
 char **incoommand(char *l)
 {
-	char *a,char *t;/*array and toen*/
+	char *a, char *t;/*array and toen*/
 	char *buffer;
 	int i;/*index*/
 
 	if (!l)
-		return(NULL);
-	 buffer = strcpy(l);
-        t = strtok(buffer, " \t\n");
-        if (!t)
-        {
-                free(l);
-                free(buffer);
-                return (NULL);
-        }
-        for (i = 0; t; i++)
-        t = strtok(NULL, " \t\n");
-        free(buffer);
-        a = malloc(sizeof(char *) * (i + 1));
-        if (!a)
-        {
-        free(l);
-        return (NULL);
-        }
-        t = strtok(l, " \t\n");
-        for (i = 0; t; i++)
-        {
-        a[i] = strcpy(t);
-        t = strtok(NULL, " \t\n");
+		return (NULL);
+	buffer = strcpy(l);
+	t = strtok(buffer, " \t\n");
+	if (!t)
+	{
+		free(l);
+		free(buffer);
+		return (NULL);
+	}
+	for (i = 0; t; i++)
+		t = strtok(NULL, " \t\n");
+	free(buffer);
+	a = malloc(sizeof(char *) * (i + 1));
+	if (!a)
+	{
+		free(l);
+		return (NULL);
+	}
+	t = strtok(l, " \t\n");
+	for (i = 0; t; i++)
+	{
+		a[i] = strcpy(t);
+		t = strtok(NULL, " \t\n");
 	}
 	free(l);
 	a[i] = NULL;
@@ -104,16 +104,16 @@ int exit_com(char **com, char **argv, int i)
 
 void p_error(char *n, char *com, int i)
 {
-        char *x, massage[] = ": not found\n";
+	char *x, massage[] = ": not found\n";
 
-        x = _it(i);
-        write(STDERR_FILENO, n, strlen(n));
-        write(STDERR_FILENO, ": ", 2);
-        write(STDERR_FILENO, x, strlen(x));
-        write(STDERR_FILENO, ": ", 2);
-        write(STDERR_FILENO, com, strlen(com));
-        write(STDERR_FILENO, msg, strlen(massage));
-        free(x);
+	x = _it(i);
+	write(STDERR_FILENO, n, strlen(n));
+	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO, x, strlen(x));
+	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO, com, strlen(com));
+	write(STDERR_FILENO, msg, strlen(massage));
+	free(x);
 }
 /**
  * _it - change int to string

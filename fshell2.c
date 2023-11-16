@@ -8,18 +8,17 @@
 
 char *get_env(char *p)
 {
-int x;
-char *buffer, *k, *v, *envo;
-
+	int x;
+	char *buffer, *k, *v, *envo;
 
 	for (x = 0; environ[x]; x++)
 	{
-	buffer = strdup(environ[x]);
-	k = strtok(buffer, "=");
-	if (strcmp(k, p) == 0)
+		buffer = strdup(environ[x]);
+		k = strtok(buffer, "=");
+		if (strcmp(k, p) == 0)
 	{
 	v = strtok(NULL, "\n");
-	envo = _strdup(value);
+	envo = strdup(value);
 	free(buffer);
 	return (envo);
 	}

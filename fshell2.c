@@ -16,13 +16,13 @@ char *get_env(char *p)
 		buffer = strdup(environ[x]);
 		k = strtok(buffer, "=");
 		if (strcmp(k, p) == 0)
-	{
-	v = strtok(NULL, "\n");
-	envo = strdup(value);
-	free(buffer);
-	return (envo);
-	}
-	free(buffer);
+		{
+			v = strtok(NULL, "\n");
+			envo = strdup(value);
+			free(buffer);
+			return (envo);
+		}
+		free(buffer);
 	}
 	return (NULL);
 }

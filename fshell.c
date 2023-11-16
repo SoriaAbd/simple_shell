@@ -69,10 +69,10 @@ int exit_com(char **com, char **argv, int i)
 	pid_t child;
 	char *comand;
 
-	comand = _getpath(com[0]);
+	comand = getpath(com[0]);
 	if (!comand)
 	{
-		printerror(argv[0], com[0], i);
+		p_error(argv[0], com[0], i);
 		f_array(com);
 		return (127);
 	}
@@ -83,14 +83,35 @@ int exit_com(char **com, char **argv, int i)
 		if (execve(comand, com, env) == -1)
 		{
 			free(comand);
-			freearray(com);
+			f_array(com);
 		}
 	}
 	else
 	{
 		waitpid(child, &s, 0);
-		freearray(com);
+		f_array(com);
 		free(comand);
 	}
 	return (WEXITSTATUS(s));
+}
+/**
+ * p_error - print a massage
+ * @n: name char
+ * @com: command char
+ * @i: index int
+ * Return: void
+*/
+
+void p_error(char *n, char *com, int i)
+{
+        char *x, massage[] = ": not found\n";
+
+        x = _it(i);
+        write(STDERR_FILENO, n, strlen(n));
+        write(STDERR_FILENO, ": ", 2);
+        write(STDERR_FILENO, x, strlen(x));
+        write(STDERR_FILENO, ": ", 2);
+        write(STDERR_FILENO, com, strlen(com));
+        write(STDERR_FILENO, msg, strlen(massage));
+        free(x);
 }
